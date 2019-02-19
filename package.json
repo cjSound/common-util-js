@@ -1,5 +1,6 @@
 {
   "name": "common-util-js",
+  "version": "0.0.1",
   "scripts": {
     "build": "rimraf dist &&  webpack --mode  production --config build/webpack.config.js"
   },
