@@ -1,6 +1,6 @@
 {
   "name": "common-util-js",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "scripts": {
     "build": "rimraf dist &&  webpack --mode  production --config build/webpack.config.js",
     "babel": "babel src -d lib    "
