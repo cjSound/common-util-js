@@ -6,7 +6,7 @@
     "babel": "babel src -d lib    "
   },
   "author": "cjSound",
-  "main": "dist/common-util-js.js",
+  "main": "lib/main.js",
   "devDependencies": {
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.5",
