@@ -2,7 +2,8 @@
   "name": "common-util-js",
   "version": "0.0.1",
   "scripts": {
-    "build": "rimraf dist &&  webpack --mode  production --config build/webpack.config.js"
+    "build": "rimraf dist &&  webpack --mode  production --config build/webpack.config.js",
+    "babel": "babel src -d lib    "
   },
   "author": "cjSound",
   "main": "dist/common-util-js.js",
@@ -11,12 +12,12 @@
     "babel-loader": "^7.1.5",
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-env": "^1.7.0",
-    "uglifyjs-webpack-plugin": "^2.1.1",
     "webpack": "^4.29.5",
     "webpack-cli": "^3.2.3",
     "clean-webpack-plugin": "^0.1.19"
   },
   "dependencies": {
+    "babel-cli": "^6.26.0",
     "babel-polyfill": "^6.26.0",
     "babel-runtime": "^6.26.0"
   }

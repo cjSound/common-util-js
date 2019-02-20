@@ -5,7 +5,7 @@
  * babel-plugin-transform-runtime: 避免polyfill污染全局变量
  */
 const path = require('path')
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+// const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 
 function resolve (dir) {
@@ -20,20 +20,15 @@ module.exports = {
     filename: '[name].js'
   },
   plugins: [
-    new UglifyJsPlugin({
-      uglifyOptions: {
-        compress: {
-          warnings: false
-        }
-      },
-      sourceMap: false,
-      parallel: true
-    }),
     new  CleanWebpackPlugin(["build"],{
       root: path.join(__dirname,"../")
     })
 
   ],
+  optimization:{
+      flagIncludedChunks:false,
+      minimize: false,
+  },
   module: {
     rules: [
       {
