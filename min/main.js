@@ -1,1 +1,1 @@
-"use strict";Object.defineProperty(exports,"__esModule",{value:!0});var _util=require("./tools/util.js"),_util2=_interopRequireDefault(_util);function _interopRequireDefault(e){return e&&e.__esModule?e:{default:e}}exports.default={util:_util2.default};
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0}),exports.util=void 0;var _util=require("./tools/util.js"),_util2=_interopRequireDefault(_util);function _interopRequireDefault(e){return e&&e.__esModule?e:{default:e}}exports.util=_util2.default;

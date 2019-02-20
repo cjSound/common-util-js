@@ -2,6 +2,6 @@ import util from './tools/util.js'
 
 
 
-export default {
+export {
     util
 }
