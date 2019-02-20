@@ -3,10 +3,11 @@
   "version": "0.0.4",
   "scripts": {
     "build": "rimraf dist &&  webpack --mode  production --config build/webpack.config.js",
-    "babel": "rimraf lib &&  mkdir lib && babel src --out-file lib/main.js && uglifyjs lib/main.js -m -o lib/main.min.js"
+    "f":" uglifyjs lib/main.js -m -o lib/main.min.js",
+    "babel": "rimraf lib &&  mkdir lib && babel src -d lib && node build/build.js"
   },
   "author": "cjSound",
-  "main": "lib/main.min.js",
+  "main": "min/main.js",
   "devDependencies": {
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.5",
