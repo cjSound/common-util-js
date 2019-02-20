@@ -1,6 +1,6 @@
 {
   "name": "common-util-js",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "scripts": {
     "build": "rimraf dist &&  webpack --mode  production --config build/webpack.config.js",
     "f": " uglifyjs lib/main.js -m -o lib/main.min.js",
