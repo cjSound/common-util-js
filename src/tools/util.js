@@ -438,6 +438,17 @@ util.util = {
         }
         return source;
     },
+    assignObj(source,newdata){
+        if(source==null) return ;
+        for (var property in source) {
+            if(typeof source[property] === "object" && typeof newdata[property] === "object"){
+                this.assignObj(source[property],newdata[property]);
+            }else if(newdata[property]!=null && newdata[property]!=''){
+                source[property]=newdata[property];
+            }
+        }
+        return source;
+    },
     formatTime(el) {
         if (el == null || el == '') {
             return '';

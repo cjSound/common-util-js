@@ -94,6 +94,7 @@
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+exports.util = undefined;
 
 var _util = __webpack_require__(1);
 
@@ -101,9 +102,7 @@ var _util2 = _interopRequireDefault(_util);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-exports.default = {
-    util: _util2.default
-};
+exports.util = _util2.default;
 
 /***/ }),
 /* 1 */

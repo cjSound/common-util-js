@@ -39,6 +39,7 @@ function fileDisplay(filePath) {
             var isDir = stats.isDirectory();//是文件夹
             var fileout = filedir.replace('lib', 'min');
             if (isFile) {
+              console.log('输出 目录',fileout)
               buildOne(filedir, fileout);　　　　　　　　　　　　　　　　　// 读取文件内容
             }
             if (isDir) {
