@@ -57,37 +57,16 @@ util.cookie = {
         }
     }
 };
-util.user={
-    saveUser:function(user){
-        util.localstorage.put('kuser',user);
+util.user = {
+    saveUser: function (user) {
+        util.localstorage.put('kuser', user);
     },
-    remove:function(){
+    remove: function () {
         util.localstorage.remove('kuser');
     },
-    getUser:function(){
+    getUser: function () {
         //用户缓存  三小时 有效
-        return util.localstorage.get('kuser',3);
-    }
-}
-util.permiss = {
-    judgetPermiss(val) {
-        var role = util.localstorage.get("menu");
-        var res =false;
-        function permiss(list){
-            for(var i =0;i<list.length;i++){
-                if(list[i].id===val){
-                    res =true;
-                    return res;
-                }
-                if(list[i].children!=null && list[i].children.length>0){
-                    permiss(list[i].children);
-                }
-            }
-        }
-        if(role!=null  && role.length>0){
-            permiss(role)
-        }
-        return res ;
+        return util.localstorage.get('kuser', 3);
     }
 }
 util.localstorage = {
@@ -111,7 +90,7 @@ util.localstorage = {
      */
     get: function (key, exp, callback) {
         var data = this.getStarage().getItem(key);
-        if(data ==null){
+        if (data == null) {
             return null;
         }
         var dataObj = JSON.parse(data);
@@ -121,7 +100,7 @@ util.localstorage = {
 
         if (dataObj != null && dataObj != '') {
             var time = new Date().getTime() - dataObj.time;
-            var data = time / 1000 / 60 / 60 ;
+            var data = time / 1000 / 60 / 60;
             if (data > exp) {
                 console.log('信息已过期');
                 if (callback != null) {
@@ -211,7 +190,7 @@ util.log = {
      * @description 打印info日志
      * @param {String} d 打印内容
      */
-    info :(d)=> {
+    info: (d) => {
         if (util.log.islog) {
             console.info(d);
         }
@@ -222,7 +201,7 @@ util.log = {
      * @param 可变参数 用于格式刷打印日志，比如：LF.log.log("%d年%d月%d日",2011,3,26); 结果是：2011年3月26日
      * 支持的占位符有：字符（%s）、整数（%d或%i）、浮点数（%f）和对象（%o）
      */
-    log: (d, ...t)=> {
+    log: (d, ...t) => {
         if (util.log.islog) {
             console.log(d, ...t);
         }
@@ -322,41 +301,41 @@ util.time = {
 }
 
 util.util = {
-    getArrayIndexByOptions:function (arry, value,optionList) {
-        
-        for(var i = 0;i<arry.length;i++){
-            var res =true;
+    getArrayIndexByOptions: function (arry, value, optionList) {
+
+        for (var i = 0; i < arry.length; i++) {
+            var res = true;
             for (var it in optionList) {
-                if(arry[i][optionList[it]]!=value[optionList[it]]){
-                    res=false;
+                if (arry[i][optionList[it]] != value[optionList[it]]) {
+                    res = false;
                 }
             }
-            if(res){
+            if (res) {
                 return i;
             }
         }
         return -1;
     },
-    getArrayObjectByValues: function (arry, value,option) {
-        var  arr =arguments;
+    getArrayObjectByValues: function (arry, value, option) {
+        var arr = arguments;
         for (let i = 0; i < arry.length; i++) {
-          if (arr.length>3) {
-            var find =true;
-            for(var  index=2;index<arr.length;index++){
-              if(arry[i][arr[index]] != value[arr[index]]){
-                find=false;
-              }
+            if (arr.length > 3) {
+                var find = true;
+                for (var index = 2; index < arr.length; index++) {
+                    if (arry[i][arr[index]] != value[arr[index]]) {
+                        find = false;
+                    }
+                }
+                if (find) return arry[i];
+            } else {
+                if (arry[i][option] == value[option]) {
+                    return arry[i];
+                }
             }
-            if(find)return arry[i] ;
-          } else {
-            if (arry[i][option] == value[option]) {
-              return arry[i];
-            }
-          }
 
         }
         return null;
-      },
+    },
     clearObj(obj) {
         for (var i in obj) {
             obj[i] = '';
@@ -370,18 +349,18 @@ util.util = {
         }
         for (var key in obj) {
             var val = obj[key];
-            newObj[key] = (val!==null && typeof val === 'object') ? util.util.cloneObj(val) : val;
+            newObj[key] = (val !== null && typeof val === 'object') ? util.util.cloneObj(val) : val;
         }
         return newObj;
     },
-    cleanObj(obj){
+    cleanObj(obj) {
         for (var key in obj) {
             if (obj[key] instanceof Array) {
                 obj[key] = [];
-            }else if (obj[key] instanceof Number) {
-                obj[key] =0;
-            }else{
-                obj[key]='';
+            } else if (obj[key] instanceof Number) {
+                obj[key] = 0;
+            } else {
+                obj[key] = '';
             }
 
         }
@@ -420,31 +399,31 @@ util.util = {
         el.innerHTML = ht;
     },
     extendObj(source, newdata) {
-        if(source==null) return ;
+        if (source == null) return;
         for (var property in newdata) {
-            if(typeof newdata[property] === "object"){
-                if(source[property]==null){
-                    if(newdata[property] instanceof Array){
-                        source[property]=[];
-                    }else{
-                        source[property]={};
+            if (typeof newdata[property] === "object") {
+                if (source[property] == null) {
+                    if (newdata[property] instanceof Array) {
+                        source[property] = [];
+                    } else {
+                        source[property] = {};
                     }
                 }
-                this.extendObj(source[property],newdata[property]);
-            }else{
-                source[property]=newdata[property];
+                this.extendObj(source[property], newdata[property]);
+            } else {
+                source[property] = newdata[property];
             }
-            
+
         }
         return source;
     },
-    assignObj(source,newdata){
-        if(source==null) return ;
+    assignObj(source, newdata) {
+        if (source == null) return;
         for (var property in source) {
-            if(typeof source[property] === "object" && typeof newdata[property] === "object"){
-                this.assignObj(source[property],newdata[property]);
-            }else if(newdata[property]!=null && newdata[property]!=''){
-                source[property]=newdata[property];
+            if (typeof source[property] === "object" && typeof newdata[property] === "object") {
+                this.assignObj(source[property], newdata[property]);
+            } else if (newdata[property] != null && newdata[property] != '') {
+                source[property] = newdata[property];
             }
         }
         return source;
@@ -485,7 +464,7 @@ util.util = {
         else
             return null;
     },
-    formatDate: function (value, type,reg) {
+    formatDate: function (value, type, reg) {
         if (value == null) {
             return '';
         }
@@ -494,7 +473,7 @@ util.util = {
         //     return value;
         // }
         var date = new Date(value);
-        reg =reg==null?'/':reg;
+        reg = reg == null ? '/' : reg;
         var y = date.getFullYear();
         var m = date.getMonth() + 1;
         m = m < 10 ? ('0' + m) : m;
@@ -512,7 +491,7 @@ util.util = {
             return d + ":" + h;
         } else if (type == 3) {
             return y + reg + m + reg + d + " " + h + ":" + minute;
-        }else if (type == 4) {
+        } else if (type == 4) {
             return y + reg + (date.getMonth() + 1) + reg + d + " " + h + ":" + minute;
         }
     },
