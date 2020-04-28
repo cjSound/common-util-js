@@ -147,7 +147,6 @@ util.localstorage = {
             util.User.setUser(user);
         }
     }
-
 };
 util.log = {
     islog: false,
